@@ -130,7 +130,7 @@ class AppModule(thunderbird.AppModule):
 				obj.isPresentableFocusAncestor = True
 		# End of table header presentation
 		try:
-			if set(["containingDocument","containingApplication"]) < set([r.relationType for r in obj._IA2Relations]):
+			if set(["containingDocument","containingApplication"]) < set([r.relationType for r in (obj._IA2Relations or [])]):
 				if obj.objectWithFocus().role == controlTypes.Role.DOCUMENT:
 					speech.cancelSpeech()
 		except NotImplementedError:
