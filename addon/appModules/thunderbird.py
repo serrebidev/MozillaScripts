@@ -157,7 +157,7 @@ class AppModule(thunderbird.AppModule):
 			if set(["containingDocument","containingApplication"]) < set([r.relationType for r in (obj._IA2Relations or [])]):
 				if obj.objectWithFocus().role == controlTypes.Role.DOCUMENT:
 					speech.cancelSpeech()
-		except NotImplementedError:
+		except (NotImplementedError, COMError):
 			pass
 		if obj.role == controlTypes.Role.SECTION and hasattr(obj, "IA2Attributes") and "id" in obj.IA2Attributes and obj.IA2Attributes["id"] == "quickFilterBarContainer":
 			obj.role = controlTypes.Role.FORM
